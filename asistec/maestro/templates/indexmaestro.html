@@ -1,0 +1,19 @@
+<h1>Lista de personas</h1>
+ <table>
+ <thead>
+ <tr>
+    <td>ID</td>
+    <td>nombre</td>
+ </tr>
+ <tbody>
+ <!--El bloque de abajo es para agregar codigo de python, algo 
+parecido como con php -->
+ {% for maestro in maestro %} 
+ <tr>
+    <td>{{maestro.idMaestro}}</td>
+    <td>{{maestro.Nombre}}</td>
+ </tr>
+ {%endfor%}
+ </tbody>
+ </thead>
+ </table

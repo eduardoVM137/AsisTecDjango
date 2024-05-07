@@ -1,0 +1,19 @@
+<h1>Lista de materias</h1>
+ <table>
+ <thead>
+ <tr>
+    <td>ID</td>
+    <td>nombre</td>
+ </tr>
+ <tbody>
+ <!--El bloque de abajo es para agregar codigo de python, algo 
+parecido como con php -->
+ {% for materia in materias %} 
+ <tr>
+    <td>{{materia.idMateria}}</td>
+    <td>{{materia.Nombre}}</td>
+ </tr>
+ {%endfor%}
+ </tbody>
+ </thead>
+ </table
