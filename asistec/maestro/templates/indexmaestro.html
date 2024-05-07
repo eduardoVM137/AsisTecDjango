@@ -1,19 +1,25 @@
-<h1>Lista de personas</h1>
- <table>
- <thead>
- <tr>
-    <td>ID</td>
-    <td>nombre</td>
- </tr>
- <tbody>
- <!--El bloque de abajo es para agregar codigo de python, algo 
-parecido como con php -->
- {% for maestro in maestro %} 
- <tr>
-    <td>{{maestro.idMaestro}}</td>
-    <td>{{maestro.Nombre}}</td>
- </tr>
- {%endfor%}
- </tbody>
- </thead>
- </table
+ 
+  
+ {%block body%}
+ <div>
+   <h1>Lista de Maestros</h1> <a href="nuevomaestro">Agregar</a>
+   <table border="1">
+   <thead>
+   <tr>
+      <td>ID</td>
+      <td>nombre</td>
+   <td></td> <td></td> <td></td> </tr>
+   <tbody>
+  <!--El bloque de abajo es para agregar codigo de python,parecido como con php -->
+   {% for maestro in maestro %} 
+   <tr>
+   <td>{{maestro.idMaestro}}</td>
+   <td>{{maestro.Nombre}} {{maestro.Apellido_Paterno}}</td> 
+   <td><a href="EditarMaestro/{{maestro.idMaestro}}">Editar</a></td>
+   <td><a href="detallePersona/{{maestro.idMaestro}}">Detalle</a></td>
+   <td><a href="EliminarMaestro/{{maestro.idMaestro}}">Eliminar</a></td>
+   </tr>
+   {%endfor%}
+   </tbody>
+   </thead> </table> </div> {%endblock%}
+ 

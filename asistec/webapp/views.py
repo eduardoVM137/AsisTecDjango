@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from maestro.models import Maestro
+from maestro.forms import MaestroForm
+
+
 from salon.models import Salon
 from materia.models import Materia
 from horario_salon.models import Horario_Salon
 from asistencia.models import Asistencia
 
-from maestro.forms import MaestroForm
 
 # Create your views here.
 def indexMaestro(request):
@@ -46,7 +48,5 @@ def nuevoMaestro(request):
             return redirect("ListadoMaestros")
         else:
             formamaestro = MaestroForm()
-            return render(request, "../maestro/Agregar.html", {"formamaestro": formamaestro})
-
-
- 
+        return render(request, "../maestro/Agregar.html", {"formamaestro": formamaestro})
+        
