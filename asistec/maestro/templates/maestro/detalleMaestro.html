@@ -1,0 +1,14 @@
+ 
+{% block body %}
+<div class="container mt-5">
+ <h1 class="display-4">Detalle Maestros:{{maestro.Nombre}}</h1>
+ <tr>
+ <td>{{ maestro.idMaestro }}</td>
+ <td>{{ maestro.Nombre }}</td>
+ <td>{{ maestro.Apellido_Paterno }}</td> 
+ <td>{{ maestro.Apellido_Materno }}</td> 
+ </tr>
+ <a class="btn btn-primary" href="{% url 'ListadoMaestros' %}">Regresar</a>
+</div>
+{% endblock %}
+ 

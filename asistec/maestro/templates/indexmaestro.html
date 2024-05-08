@@ -2,7 +2,7 @@
   
  {%block body%}
  <div>
-   <h1>Lista de Maestros</h1> <a href="nuevomaestro">Agregar</a>
+   <h1>Lista de Maestros</h1> <a href="maestro/nuevoMaestro">Agregar</a>
    <table border="1">
    <thead>
    <tr>
@@ -15,9 +15,9 @@
    <tr>
    <td>{{maestro.idMaestro}}</td>
    <td>{{maestro.Nombre}} {{maestro.Apellido_Paterno}}</td> 
-   <td><a href="EditarMaestro/{{maestro.idMaestro}}">Editar</a></td>
-   <td><a href="detallePersona/{{maestro.idMaestro}}">Detalle</a></td>
-   <td><a href="EliminarMaestro/{{maestro.idMaestro}}">Eliminar</a></td>
+   <td><a href="maestro/EditarMaestro/{{maestro.idMaestro}}">Editar</a></td>
+   <td><a href="maestro/DetalleMaestro/{{maestro.idMaestro}}">Detalle</a></td>
+   <td><a href="maestro/EliminarMaestro/{{maestro.idMaestro}}">Eliminar</a></td>
    </tr>
    {%endfor%}
    </tbody>

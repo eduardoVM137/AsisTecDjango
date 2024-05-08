@@ -17,8 +17,10 @@ def indexMaestro(request):
 
 def index(request):
  maestros = Maestro.objects.order_by("idMaestro")
- return render(request, "indexMaestro.html", 
+ return render(request, "index.html", 
  {"maestro": maestros})
+
+
 
 def salon(request):
  salones = Salon.objects.order_by("idSalon")
@@ -39,14 +41,3 @@ def materia(request):
  materias = Materia.objects.order_by("idMateria")
  return render(request, "indexMateria.html", 
  {"materias": materias})
-
-def nuevoMaestro(request):
-    if request.method == "POST":
-        formamaestro = MaestroForm(request.POST)
-        if formamaestro.is_valid():
-            formamaestro.save()
-            return redirect("ListadoMaestros")
-        else:
-            formamaestro = MaestroForm()
-        return render(request, "../maestro/Agregar.html", {"formamaestro": formamaestro})
-        

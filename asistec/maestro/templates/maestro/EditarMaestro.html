@@ -8,7 +8,9 @@
 <div>{{formamaestro}}
 </div>
  </table>
- <div ><input 
-type="submit" 
-value="submit"> </div>
- </form> </div> {%endblock%}
+ <div ><input type="submit" value="submit">
+ </div>
+ {% csrf_token %}
+ </form>
+</div>
+{%endblock%}
