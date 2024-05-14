@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "materia",
     "horario_salon",
     "asistencia",
+    "widget_tweaks",
 ]
 
 MIDDLEWARE = [

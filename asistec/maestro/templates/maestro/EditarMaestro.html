@@ -1,16 +1,10 @@
-  
- {%block body%}
+{% block body %}
 <div>
-    assd
-<form method="post">
-<h1>Editar maestro</h1>
-<table>
-<div>{{formamaestro}}
+    <form id="modal-form" method="post">
+        {% csrf_token %}
+        {{ formamaestro.as_p }}
+        <input type="hidden" name="maestro_id" value="{{ formamaestro.instance.idMaestro }}">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
 </div>
- </table>
- <div ><input type="submit" value="submit">
- </div>
- {% csrf_token %}
- </form>
-</div>
-{%endblock%}
+{% endblock %}

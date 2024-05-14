@@ -10,10 +10,13 @@ from asistencia.models import Asistencia
 
 
 # Create your views here.
+
 def indexMaestro(request):
- maestros = Maestro.objects.order_by("idMaestro")
- return render(request, "indexMaestro.html", 
- {"maestro": maestros})
+    formamaestro = MaestroForm()  # Crea una instancia del formulario
+    maestros = Maestro.objects.all().order_by("idMaestro")
+    return render(request, "indexMaestro.html", {"maestros": maestros, "formamaestro": formamaestro})
+
+
 
 def index(request):
  maestros = Maestro.objects.order_by("idMaestro")
