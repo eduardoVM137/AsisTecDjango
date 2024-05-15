@@ -1,10 +1,12 @@
-from django.db import models 
+from django.db import models
 
+# Create your models here.
 class Asistencia(models.Model):
-    idAsistencia = models.AutoField(primary_key=True)
-    idHorario = models.IntegerField()#models.ForeignKey(Horario_Salon, on_delete=models.CASCADE)
-    Hora_Entrada = models.DateTimeField()
-    Hora_Salida = models.DateTimeField(null=True, blank=True)
+    idMaestro = models.AutoField(primary_key=True)
+    Nombre = models.CharField(max_length=255)
+    Apellido_Paterno = models.CharField(max_length=255)
+    Apellido_Materno = models.CharField(max_length=255)
+    # ...otros campos como se necesiten
 
     class Meta:
         db_table = 'asistencia'  # Nombre de la tabla en la base de datos

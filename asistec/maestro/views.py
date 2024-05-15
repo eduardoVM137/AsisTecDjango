@@ -1,36 +1,47 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from maestro.models import Maestro
-from maestro.forms import MaestroForm
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import JsonResponse
 from django.template.loader import render_to_string
+from django.views import View
+from maestro.models import Maestro
+from maestro.forms import MaestroForm
 
-def nuevoMaestro(request):
-    formamaestro = MaestroForm(request.POST or None)
-    if formamaestro.is_valid():
-        formamaestro.save()
-        return JsonResponse({'success': True})
-    return JsonResponse({'success': False, 'errors': formamaestro.errors})
+class MaestroListView(View):
+    def get(self, request):
+        formamaestro = MaestroForm()
+        maestros = Maestro.objects.all().order_by("idMaestro")
+        return render(request, "indexMaestro.html", {"maestros": maestros, "formamaestro": formamaestro})
 
-def EditarMaestro(request, id):
-    maestro = get_object_or_404(Maestro, pk=id)
-    if request.method == 'POST':
+class MaestroCreateView(View):
+    def post(self, request):
+        formamaestro = MaestroForm(request.POST)
+        if formamaestro.is_valid():
+            formamaestro.save()
+            return JsonResponse({'success': True})
+        return JsonResponse({'success': False, 'errors': formamaestro.errors})
+
+class MaestroUpdateView(View):
+    def get(self, request, id):
+        maestro = get_object_or_404(Maestro, pk=id)
+        formamaestro = MaestroForm(instance=maestro)
+        maestro_html = render_to_string('maestro/EditarMaestro.html', {'formamaestro': formamaestro}, request=request)
+        return JsonResponse({'success': True, 'maestro_html': maestro_html, 'maestro': {
+            'Nombre': maestro.Nombre,
+            'Apellido_Paterno': maestro.Apellido_Paterno,
+            'Apellido_Materno': maestro.Apellido_Materno
+        }})
+
+    def post(self, request, id):
+        maestro = get_object_or_404(Maestro, pk=id)
         formamaestro = MaestroForm(request.POST, instance=maestro)
         if formamaestro.is_valid():
             formamaestro.save()
             return JsonResponse({'success': True})
         return JsonResponse({'success': False, 'errors': formamaestro.errors})
-    else:
-        formamaestro = MaestroForm(instance=maestro)
-        maestro_html = render_to_string('maestro/EditarMaestro.html', {'formamaestro': formamaestro}, request=request)
-        return JsonResponse({'success': True, 'maestro_html': maestro_html})
 
-def EliminarMaestro(request, id):
-    maestro = get_object_or_404(Maestro, pk=id)
-    maestro.delete()
-    return redirect("indexmaestro.html")
+class MaestroDeleteView(View):
+    def delete(self, request, id):
+        maestro = get_object_or_404(Maestro, pk=id)
+        maestro.delete()
+        return JsonResponse({'success': True})
 
-# views.py en app webapp
-def indexMaestro(request):
-    formamaestro = MaestroForm()  # Crea una instancia del formulario
-    maestros = Maestro.objects.all().order_by("idMaestro")
-    return render(request, "indexmaestro.html", {"maestros": maestros, "formamaestro": formamaestro})
+nuevoMaestro = MaestroCreateView.as_view()

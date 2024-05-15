@@ -3,7 +3,7 @@
     <form id="modal-form" method="post">
         {% csrf_token %}
         {{ formamaestro.as_p }}
-        <input type="hidden" name="maestro_id" value="{{ formamaestro.instance.idMaestro }}">
+        <input type="hidden" id="maestro_id" name="maestro_id" value="{{ formamaestro.instance.idMaestro }}">
         <button type="submit" class="btn btn-primary">Guardar</button>
     </form>
 </div>

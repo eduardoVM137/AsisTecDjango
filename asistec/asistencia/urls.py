@@ -1,8 +1,6 @@
-from django.urls import include, path
+from django.urls import path
+from .views import AsistenciaListView
 
-from . import views
-
-from maestro.views import *
-app_name = "asistencia"
-
- 
+urlpatterns = [
+    path('', AsistenciaListView.as_view(), name='listado_asistencia'), 
+]
