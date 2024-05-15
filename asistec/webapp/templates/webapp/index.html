@@ -1,0 +1,12 @@
+{% extends 'webapp/layout.html' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block body %}
+<h1>Bienvenido a Asistec</h1>
+<p>Seleccione una de las siguientes opciones:</p>
+<ul>
+    <li><a href="{% url 'listado_maestros' %}">Lista de Maestros</a></li> 
+    <li><a href="{% url 'listado_asistencia' %}">Lista de Asistencias</a></li>
+</ul>
+{% endblock %}

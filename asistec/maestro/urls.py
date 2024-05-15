@@ -1,13 +1,9 @@
-from django.urls import include, path
+from django.urls import path
+from .views import MaestroListView, MaestroCreateView, MaestroUpdateView, MaestroDeleteView
 
-from . import views
-
-from maestro.views import *
-app_name = "maestro"
-
-urlpatterns = [  
-    path("nuevoMaestro", nuevoMaestro),
-    path("EditarMaestro/<int:id>", EditarMaestro),   
-    path("EliminarMaestro/<int:id>", EliminarMaestro), 
-    
+urlpatterns = [
+    path('', MaestroListView.as_view(), name='listado_maestros'),
+    path('nuevo/', MaestroCreateView.as_view(), name='nuevo_maestro'),
+    path('editar/<int:id>/', MaestroUpdateView.as_view(), name='editar_maestro'),
+    path('eliminar/<int:id>/', MaestroDeleteView.as_view(), name='eliminar_maestro'),
 ]
