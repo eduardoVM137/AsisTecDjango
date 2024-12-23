@@ -1,7 +1,7 @@
 # AsisTecDjango
 
 ## Descripción General
-**AsisTecDjango** es un sistema de asistencia desarrollado en Django diseñado para gestionar y automatizar procesos relacionados con el registro, monitoreo y control de asistencia de personal o estudiantes. El sistema incluye una interfaz amigable, registro eficiente de asistencia y la capacidad de visualizar métricas clave mediante un dashboard interactivo en Power BI.
+**AsisTecDjango** es un sistema de asistencia desarrollado en Django diseñado para gestionar y automatizar procesos relacionados con el registro, monitoreo y control de asistencia de personal o estudiantes(Ajustable a otros entornos mas). El sistema incluye una interfaz amigable, registro eficiente de asistencia y la capacidad de visualizar métricas clave mediante un dashboard interactivo en Power BI.
 
 ## Funcionalidades Principales
 - Registro de asistencia en tiempo real.
